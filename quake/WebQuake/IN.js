@@ -4,6 +4,7 @@ IN.mouse_x = 0.0;
 IN.mouse_y = 0.0;
 IN.old_mouse_x = 0.0;
 IN.old_mouse_y = 0.0;
+IN.locked = false;
 
 IN.StartupMouse = function()
 {
@@ -36,9 +37,16 @@ IN.StartupMouse = function()
 	}
 	else
 		return;
+
+	// Clic en el canvas = capturar mouse
 	VID.mainwindow.onclick = IN.onclick;
-	document.onmousemove = IN.onmousemove;
+
+	// Movimiento del mouse — funciona siempre que esté capturado
+	document.addEventListener('mousemove', IN.onmousemove);
+
+	// Cambio de estado del pointer lock
 	document[IN.pointerlockchange] = IN.onpointerlockchange;
+
 	IN.mouse_avail = true;
 };
 
@@ -52,7 +60,7 @@ IN.Shutdown = function()
 	if (IN.mouse_avail === true)
 	{
 		VID.mainwindow.onclick = null;
-		document.onmousemove = null;
+		document.removeEventListener('mousemove', IN.onmousemove);
 		document[IN.pointerlockchange] = null;
 	}
 };
@@ -60,6 +68,10 @@ IN.Shutdown = function()
 IN.MouseMove = function()
 {
 	if (IN.mouse_avail !== true)
+		return;
+
+	// Solo procesar si el mouse está capturado
+	if (!IN.locked)
 		return;
 
 	var mouse_x, mouse_y;
@@ -79,33 +91,22 @@ IN.MouseMove = function()
 	mouse_y *= CL.sensitivity.value;
 
 	var strafe = CL.kbuttons[CL.kbutton.strafe].state & 1;
-	var mlook = CL.kbuttons[CL.kbutton.mlook].state & 1;
 	var angles = CL.state.viewangles;
 
-	if ((strafe !== 0) || ((CL.lookstrafe.value !== 0) && (mlook !== 0)))
+	// Movimiento horizontal — siempre activo con el mouse
+	if (strafe !== 0)
 		CL.state.cmd.sidemove += CL.m_side.value * mouse_x;
 	else
 		angles[1] -= CL.m_yaw.value * mouse_x;
 
-	if (mlook !== 0)
-		V.StopPitchDrift();
+	// Movimiento vertical — siempre activo (freelook completo)
+	V.StopPitchDrift();
+	angles[0] += CL.m_pitch.value * mouse_y;
+	if (angles[0] > 80.0)
+		angles[0] = 80.0;
+	else if (angles[0] < -70.0)
+		angles[0] = -70.0;
 
-	if ((mlook !== 0) && (strafe === 0))
-	{
-		angles[0] += CL.m_pitch.value * mouse_y;
-		if (angles[0] > 80.0)
-			angles[0] = 80.0;
-		else if (angles[0] < -70.0)
-			angles[0] = -70.0;
-	}
-	else
-	{
-		if ((strafe !== 0) && (Host.noclip_anglehack === true))
-			CL.state.cmd.upmove -= CL.m_forward.value * mouse_y;
-		else
-			CL.state.cmd.forwardmove -= CL.m_forward.value * mouse_y;
-	}
-	
 	IN.mouse_x = IN.mouse_y = 0;
 };
 
@@ -114,10 +115,13 @@ IN.Move = function()
 	IN.MouseMove();
 };
 
+// Un solo clic captura el mouse — no hace falta mantenerlo
 IN.onclick = function()
 {
-	if (document[IN.pointerLockElement] !== this)
-		this[IN.requestPointerLock]();
+	if (document[IN.pointerLockElement] !== VID.mainwindow)
+	{
+		VID.mainwindow[IN.requestPointerLock]();
+	}
 };
 
 IN.onmousemove = function(e)
@@ -128,10 +132,19 @@ IN.onmousemove = function(e)
 	IN.mouse_y += e[IN.movementY];
 };
 
+// Cuando se suelta el pointer lock (ESC) — NO mandar ESC al juego
+// para que no abra el menú automáticamente
 IN.onpointerlockchange = function()
 {
 	if (document[IN.pointerLockElement] === VID.mainwindow)
-		return;
-	Key.Event(Key.k.escape, true);
-	Key.Event(Key.k.escape);
+	{
+		// Mouse capturado
+		IN.locked = true;
+	}
+	else
+	{
+		// Mouse suelto — solo marcamos como no capturado
+		// sin mandar ESC para no interrumpir el juego
+		IN.locked = false;
+	}
 };
