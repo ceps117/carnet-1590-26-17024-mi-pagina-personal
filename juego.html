@@ -1,29 +1,142 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Quake</title>
     <link rel="stylesheet" href="estilo.css">
     <style>
-        body { text-align:center; padding:40px; }
-        .btn {
-            display:inline-block;
-            margin-top:20px;
-            padding:16px 40px;
-            background:linear-gradient(135deg,#330000,#550000);
-            border:2px solid #cc4400;
-            color:#ff6622;
-            font-size:1.1rem;
-            font-weight:bold;
-            letter-spacing:3px;
-            text-decoration:none;
-            border-radius:6px;
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            background: #050508;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .titulo {
+            font-family: 'Courier New', monospace;
+            font-size: 2.5rem;
+            font-weight: bold;
+            letter-spacing: 8px;
+            color: #cc4400;
+            text-shadow: 0 0 30px #882200, 0 0 60px #441100;
+            margin-bottom: 10px;
+        }
+
+        .subtitulo {
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #443322;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .btn-jugar {
+            display: inline-block;
+            padding: 18px 50px;
+            background: linear-gradient(135deg, #330000, #550000);
+            border: 2px solid #cc4400;
+            color: #ff6622;
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 5px;
+            text-decoration: none;
+            border-radius: 6px;
+            text-transform: uppercase;
+            transition: all 0.2s;
+            box-shadow: 0 0 20px #cc440033;
+            margin-bottom: 30px;
+        }
+
+        .btn-jugar:hover {
+            background: linear-gradient(135deg, #550000, #880000);
+            box-shadow: 0 0 40px #cc440066;
+            transform: scale(1.03);
+            color: #ffaa44;
+        }
+
+        .controles {
+            background: rgba(10,8,20,0.8);
+            border: 1px solid #1a0808;
+            border-radius: 8px;
+            padding: 24px 40px;
+            margin-bottom: 30px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .controles h3 {
+            color: #cc4400;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        .grid-controles {
+            display: grid;
+            grid-template-columns: auto auto;
+            gap: 8px 30px;
+        }
+
+        .tecla {
+            color: #ff6622;
+            font-weight: bold;
+            font-size: 0.85rem;
+            text-align: right;
+        }
+
+        .accion {
+            color: #554433;
+            font-size: 0.85rem;
+        }
+
+        .btn-volver {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #332211;
+            text-decoration: none;
+            border: 1px solid #221100;
+            padding: 6px 16px;
+            border-radius: 4px;
+            letter-spacing: 2px;
+            transition: all 0.2s;
+        }
+
+        .btn-volver:hover {
+            color: #cc4400;
+            border-color: #cc4400;
         }
     </style>
 </head>
 <body>
-    <h1>☢ QUAKE</h1>
-    <p>Haz clic para abrir el juego en pantalla completa</p>
-    <a class="btn" href="quake/index.htm" target="_blank">▶ JUGAR QUAKE</a>
+
+    <div class="titulo">☢ QUAKE</div>
+    <p class="subtitulo">id Software 1996 — Port WebQuake — Episodio 1: Dimension of the Doomed</p>
+
+    <a class="btn-jugar" href="quake/index.htm" target="_blank">▶ JUGAR</a>
+
+    <div class="controles">
+        <h3>Controles</h3>
+        <div class="grid-controles">
+            <span class="tecla">↑ ↓ ← →</span>  <span class="accion">Moverse y girar</span>
+            <span class="tecla">A / D</span>       <span class="accion">Desplazarse de lado</span>
+            <span class="tecla">CTRL</span>        <span class="accion">Disparar</span>
+            <span class="tecla">CLIC IZQ</span>    <span class="accion">Disparar (con mouse)</span>
+            <span class="tecla">ESPACIO</span>     <span class="accion">Saltar</span>
+            <span class="tecla">1 — 8</span>       <span class="accion">Cambiar arma</span>
+            <span class="tecla">ENTER</span>       <span class="accion">Confirmar en menú</span>
+            <span class="tecla">ESC</span>         <span class="accion">Menú principal</span>
+        </div>
+    </div>
+
+    <a class="btn-volver" href="javascript:history.back()">← VOLVER</a>
+
 </body>
-</html>
 </html>
