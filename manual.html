@@ -1,26 +1,110 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Manual Técnico</title>
+    <title>Manual Tecnico</title>
     <link rel="stylesheet" href="estilo.css">
-    <style>
-        body { padding: 30px; }
-    </style>
 </head>
 <body>
 
-<h1>📖 Manual Técnico</h1>
+<h1>Manual Tecnico</h1>
 
+<h2>1. Estructura del Proyecto</h2>
+<p>El proyecto esta organizado en una carpeta principal que contiene todos los archivos HTML, el archivo CSS y las subcarpetas necesarias para los recursos.</p>
 <ol>
-    <li>Se creó una carpeta principal para el proyecto.</li>
-    <li>Se creó el archivo index.html usando frames.</li>
-    <li>Se diseñó un menú con enlaces.</li>
-    <li>Se agregaron páginas HTML independientes.</li>
-    <li>Se creó una galería con 10 imágenes.</li>
-    <li>Se insertó un video de YouTube usando iframe.</li>
-    <li>Se agregó un juego estilo SAS: Zombie Assault con JavaScript y Canvas.</li>
-    <li>Se aplicó diseño usando CSS con tema oscuro azul-morado.</li>
-    <li>Se probaron todos los enlaces y páginas.</li>
+    <li>Carpeta raiz: contiene index.html, menu.html, estilo.css y todas las paginas.</li>
+    <li>Carpeta imagenes: contiene las 10 imagenes usadas en la galeria y la foto de perfil.</li>
+    <li>Carpeta musica: contiene los archivos mp3 que se reproducen en la pagina del juego.</li>
+    <li>Carpeta quake: contiene el motor WebQuake y los archivos del juego.</li>
+    <li>Carpeta quake/id1: contiene el archivo pak0.pak con los datos del juego Quake.</li>
+</ol>
+
+<h2>2. Creacion del index.html con Frames</h2>
+<p>El archivo index.html utiliza la etiqueta frameset para dividir la pantalla en dos secciones. La columna izquierda tiene un ancho fijo de 220 pixeles y muestra el menu de navegacion. La columna derecha ocupa el resto del espacio y carga las paginas cuando el usuario hace clic en un enlace.</p>
+<ol>
+    <li>Se uso la etiqueta frameset con el atributo cols="220px,*" para definir las columnas.</li>
+    <li>El primer frame carga menu.html y tiene el nombre "menu".</li>
+    <li>El segundo frame carga bienvenida.html al inicio y tiene el nombre "contenido".</li>
+    <li>Los enlaces del menu usan target="contenido" para abrir las paginas en el frame derecho.</li>
+    <li>El enlace del juego usa target="_top" para abrir fuera del frameset.</li>
+</ol>
+
+<h2>3. Diseno con CSS</h2>
+<p>El archivo estilo.css aplica el diseno visual a todas las paginas del sitio. Se utilizo un esquema de colores oscuro con tonos azul y morado. Las propiedades principales utilizadas fueron las siguientes.</p>
+<ol>
+    <li>background-color: define el color de fondo de cada elemento.</li>
+    <li>font-family: se uso Arial como fuente principal por ser compatible con todos los navegadores.</li>
+    <li>border-radius: redondea las esquinas de los botones y las imagenes.</li>
+    <li>border-left: agrega una linea de color morado al lado izquierdo de cada enlace del menu.</li>
+    <li>display flex con flex-wrap wrap: permite que las imagenes de la galeria se acomoden automaticamente en filas.</li>
+    <li>border-collapse collapse: elimina el espacio doble entre celdas de la tabla.</li>
+    <li>object-fit cover: hace que las imagenes llenen su espacio sin deformarse.</li>
+</ol>
+
+<h2>4. Menu de Navegacion</h2>
+<p>El menu se creo en un archivo separado llamado menu.html. Contiene una lista desordenada con enlaces a cada seccion del sitio. Cada enlace tiene el atributo target que indica en que frame o ventana se abre la pagina.</p>
+<ol>
+    <li>Se uso la etiqueta ul para crear la lista de enlaces.</li>
+    <li>Cada enlace tiene href con la ruta del archivo y target con el nombre del frame destino.</li>
+    <li>El CSS elimina los puntos de la lista con list-style-type none.</li>
+    <li>Se agrego un borde izquierdo de color morado a cada enlace con border-left.</li>
+</ol>
+
+<h2>5. Galeria de Imagenes</h2>
+<p>La galeria muestra 10 imagenes usando un contenedor div con la clase galeria. El CSS aplica flexbox para acomodar las imagenes en filas automaticamente segun el ancho disponible.</p>
+<ol>
+    <li>Se creo una carpeta llamada imagenes dentro del proyecto.</li>
+    <li>Las imagenes se nombraron img1.jpg hasta img10.jpg.</li>
+    <li>Se uso display flex y flex-wrap wrap para el contenedor.</li>
+    <li>Cada imagen tiene width 200px, height 140px y object-fit cover.</li>
+    <li>Se agrego border-radius para redondear las esquinas.</li>
+</ol>
+
+<h2>6. Video de YouTube</h2>
+<p>El video se inserto usando la etiqueta iframe apuntando a la URL de embed de YouTube. Esta URL tiene el formato youtube.com/embed/ seguido del ID del video.</p>
+<ol>
+    <li>Se copio el ID del video desde la URL de YouTube.</li>
+    <li>Se construyo la URL de embed con el formato correcto.</li>
+    <li>Se agrego el atributo allowfullscreen para permitir pantalla completa.</li>
+    <li>El video solo funciona cuando la pagina esta publicada en un dominio real como GitHub Pages.</li>
+</ol>
+
+<h2>7. Tabla de Notas</h2>
+<p>La tabla de notas se creo con las etiquetas table, tr, th y td. Se agrego una columna extra para mostrar el promedio de cada curso calculado manualmente.</p>
+<ol>
+    <li>Se uso th para los encabezados con fondo morado definido en el CSS.</li>
+    <li>Se uso td para cada celda de datos con padding de 10px.</li>
+    <li>border-collapse collapse elimina el espacio entre celdas.</li>
+    <li>Se agrego border-bottom a cada fila para separar visualmente los datos.</li>
+</ol>
+
+<h2>8. Juego Quake</h2>
+<p>Se integro el juego Quake 1 usando WebQuake, un port del motor original a JavaScript. Los archivos del juego se alojan dentro del propio repositorio para que funcionen sin depender de servidores externos.</p>
+<ol>
+    <li>Se descargo WebQuake desde GitHub y se copio la carpeta Client/WebQuake al proyecto.</li>
+    <li>Se descargo el archivo pak0.pak del shareware de Quake 1 y se coloco en quake/id1/.</li>
+    <li>Se creo un archivo autoexec.cfg en quake/id1/ para configurar los controles WASD y el mouse.</li>
+    <li>Se modifico el archivo IN.js para que el mouse quede capturado con un solo clic.</li>
+    <li>El enlace del menu usa target="_top" para abrir la pagina fuera del frameset.</li>
+    <li>El boton de jugar usa target="_blank" para abrir el juego en una pestaña nueva.</li>
+    <li>Los archivos en quake/id1/ se nombraron en minusculas para compatibilidad con GitHub Pages.</li>
+</ol>
+
+<h2>9. Musica de Fondo</h2>
+<p>La pagina del juego incluye un reproductor de musica usando la etiqueta audio de HTML5. Las canciones se almacenan en una carpeta llamada musica dentro del proyecto.</p>
+<ol>
+    <li>Se creo una carpeta musica y se colocaron los archivos mp3 dentro.</li>
+    <li>Se uso la etiqueta audio con JavaScript para crear una lista de reproduccion.</li>
+    <li>Las canciones se reproducen en orden y vuelven al inicio al terminar la ultima.</li>
+    <li>Se agrego un control visual fijo en la esquina inferior derecha de la pagina.</li>
+</ol>
+
+<h2>10. Publicacion en GitHub Pages</h2>
+<ol>
+    <li>Se creo un repositorio en github.com.</li>
+    <li>Se subieron todos los archivos del proyecto al repositorio.</li>
+    <li>En Settings, seccion Pages, se selecciono la rama main como fuente.</li>
+    <li>GitHub genera automaticamente una URL publica para acceder al sitio.</li>
+    <li>Se verifico que todos los enlaces, el video y el juego funcionaran correctamente.</li>
 </ol>
 
 </body>

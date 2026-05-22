@@ -8,7 +8,7 @@
         * { margin:0; padding:0; box-sizing:border-box; }
 
         body {
-            background: #050508;
+            background: #1a1a2e;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -18,62 +18,55 @@
         }
 
         .titulo {
-            font-family: 'Courier New', monospace;
+            font-family: Arial, sans-serif;
             font-size: 2.5rem;
             font-weight: bold;
             letter-spacing: 8px;
-            color: #cc4400;
-            text-shadow: 0 0 30px #882200, 0 0 60px #441100;
+            color: #7b2fff;
             margin-bottom: 10px;
         }
 
         .subtitulo {
-            font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
-            color: #443322;
-            letter-spacing: 2px;
+            font-size: 0.85rem;
+            color: #555580;
+            letter-spacing: 1px;
             margin-bottom: 40px;
             text-align: center;
         }
 
         .btn-jugar {
             display: inline-block;
-            padding: 18px 50px;
-            background: linear-gradient(135deg, #330000, #550000);
-            border: 2px solid #cc4400;
-            color: #ff6622;
-            font-family: 'Courier New', monospace;
-            font-size: 1.2rem;
+            padding: 16px 48px;
+            background-color: #16213e;
+            border: 2px solid #7b2fff;
+            color: #a855f7;
+            font-family: Arial, sans-serif;
+            font-size: 1.1rem;
             font-weight: bold;
-            letter-spacing: 5px;
+            letter-spacing: 4px;
             text-decoration: none;
             border-radius: 6px;
-            text-transform: uppercase;
-            transition: all 0.2s;
-            box-shadow: 0 0 20px #cc440033;
             margin-bottom: 30px;
+            transition: background-color 0.2s;
         }
 
         .btn-jugar:hover {
-            background: linear-gradient(135deg, #550000, #880000);
-            box-shadow: 0 0 40px #cc440066;
-            transform: scale(1.03);
-            color: #ffaa44;
+            background-color: #0f3460;
+            color: #ffffff;
         }
 
         .controles {
-            background: rgba(10,8,20,0.8);
-            border: 1px solid #1a0808;
+            background-color: #16213e;
+            border: 1px solid #4a1a99;
             border-radius: 8px;
             padding: 24px 40px;
             margin-bottom: 30px;
-            font-family: 'Courier New', monospace;
         }
 
         .controles h3 {
-            color: #cc4400;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
+            color: #a855f7;
+            font-size: 0.85rem;
+            letter-spacing: 2px;
             text-transform: uppercase;
             margin-bottom: 16px;
             text-align: center;
@@ -86,57 +79,149 @@
         }
 
         .tecla {
-            color: #ff6622;
+            color: #7b2fff;
             font-weight: bold;
             font-size: 0.85rem;
             text-align: right;
         }
 
         .accion {
-            color: #554433;
+            color: #8888aa;
             font-size: 0.85rem;
         }
 
         .btn-volver {
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #332211;
+            font-size: 0.8rem;
+            color: #555580;
             text-decoration: none;
-            border: 1px solid #221100;
+            border: 1px solid #4a1a99;
             padding: 6px 16px;
             border-radius: 4px;
-            letter-spacing: 2px;
             transition: all 0.2s;
         }
 
         .btn-volver:hover {
-            color: #cc4400;
-            border-color: #cc4400;
+            color: #a855f7;
+            border-color: #7b2fff;
+            background: none;
+        }
+
+        #reproductor {
+            position: fixed;
+            bottom: 14px;
+            right: 14px;
+            background: #16213e;
+            border: 1px solid #4a1a99;
+            border-radius: 8px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 999;
+        }
+
+        #reproductor button {
+            background: #1a1a2e;
+            border: 1px solid #7b2fff;
+            color: #a855f7;
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 4px 10px;
+            font-size: 1rem;
+        }
+
+        #reproductor button:hover {
+            background: #0f3460;
+            color: #fff;
+        }
+
+        #nombre-cancion {
+            color: #8888aa;
+            font-size: 0.75rem;
+            max-width: 140px;
+            overflow: hidden;
+            white-space: nowrap;
+            text-overflow: ellipsis;
         }
     </style>
 </head>
 <body>
 
-    <div class="titulo">☢ QUAKE</div>
-    <p class="subtitulo">id Software 1996 — Port WebQuake — Episodio 1: Dimension of the Doomed</p>
+    <div class="titulo">QUAKE</div>
+    <p class="subtitulo">id Software 1996 — WebQuake — Episodio 1: Dimension of the Doomed</p>
 
-    <a class="btn-jugar" href="quake/index.htm" target="_blank">▶ JUGAR</a>
+    <a class="btn-jugar" href="quake/index.htm" target="_blank">JUGAR</a>
 
     <div class="controles">
         <h3>Controles</h3>
         <div class="grid-controles">
-            <span class="tecla">↑ ↓ ← →</span>  <span class="accion">Moverse y girar</span>
-            <span class="tecla">A / D</span>       <span class="accion">Desplazarse de lado</span>
-            <span class="tecla">CTRL</span>        <span class="accion">Disparar</span>
-            <span class="tecla">CLIC IZQ</span>    <span class="accion">Disparar (con mouse)</span>
-            <span class="tecla">ESPACIO</span>     <span class="accion">Saltar</span>
-            <span class="tecla">1 — 8</span>       <span class="accion">Cambiar arma</span>
-            <span class="tecla">ENTER</span>       <span class="accion">Confirmar en menú</span>
-            <span class="tecla">ESC</span>         <span class="accion">Menú principal</span>
+            <span class="tecla">W A S D</span>     <span class="accion">Moverse</span>
+            <span class="tecla">MOUSE</span>        <span class="accion">Apuntar (clic para activar)</span>
+            <span class="tecla">CTRL</span>         <span class="accion">Disparar</span>
+            <span class="tecla">CLIC IZQ</span>     <span class="accion">Disparar</span>
+            <span class="tecla">ESPACIO</span>      <span class="accion">Saltar</span>
+            <span class="tecla">1 — 8</span>        <span class="accion">Cambiar arma</span>
+            <span class="tecla">ENTER</span>        <span class="accion">Confirmar en menu</span>
+            <span class="tecla">ESC</span>          <span class="accion">Menu principal / soltar mouse</span>
         </div>
     </div>
 
-    <a class="btn-volver" href="javascript:history.back()">← VOLVER</a>
+    <a class="btn-volver" href="javascript:history.back()">Volver</a>
+
+    <div id="reproductor">
+        <button onclick="anterior()">&#9664;&#9664;</button>
+        <button onclick="togglePausa()" id="btn-pausa">&#9646;&#9646;</button>
+        <button onclick="siguiente()">&#9654;&#9654;</button>
+        <span id="nombre-cancion">cancion1.mp3</span>
+    </div>
+
+    <audio id="audio" autoplay>
+        <source src="musica/cancion1.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        var canciones = [
+            'musica/cancion1.mp3',
+            'musica/cancion2.mp3',
+            'musica/cancion3.mp3',
+            'musica/cancion4.mp3',
+            'musica/cancion5.mp3'
+        ];
+
+        var actual = 0;
+        var audio = document.getElementById('audio');
+        var nombre = document.getElementById('nombre-cancion');
+        var btnPausa = document.getElementById('btn-pausa');
+
+        function cargar(index) {
+            audio.src = canciones[index];
+            nombre.textContent = canciones[index].split('/')[1];
+            audio.play();
+            btnPausa.innerHTML = '&#9646;&#9646;';
+        }
+
+        function siguiente() {
+            actual = (actual + 1) % canciones.length;
+            cargar(actual);
+        }
+
+        function anterior() {
+            actual = (actual - 1 + canciones.length) % canciones.length;
+            cargar(actual);
+        }
+
+        function togglePausa() {
+            if (audio.paused) {
+                audio.play();
+                btnPausa.innerHTML = '&#9646;&#9646;';
+            } else {
+                audio.pause();
+                btnPausa.innerHTML = '&#9654;';
+            }
+        }
+
+        audio.addEventListener('ended', siguiente);
+    </script>
 
 </body>
 </html>
