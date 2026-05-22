@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hoja de Vida</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        body { padding: 30px; }
+        .perfil {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            margin-bottom: 24px;
+            padding: 20px;
+            background: #0a0820;
+            border-radius: 10px;
+            border: 1px solid #2a1a55;
+        }
+        .perfil img {
+            width: 130px;
+            height: 130px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+        .perfil-info p { margin: 4px 0; }
+        .skill-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, #1a0a33, #0d1a40);
+            border: 1px solid #2a1a55;
+            color: #a855f7;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin: 4px;
+            font-weight: 600;
+        }
+        ul { padding-left: 0; }
+        ul li {
+            padding: 6px 0;
+            border-bottom: 1px solid #2a1a5522;
+            color: #e2d9f3;
+        }
+        ul li:last-child { border-bottom: none; }
+        ul li::before {
+            content: '▸ ';
+            color: #7b2fff;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Hoja de Vida</h1>
+
+<div class="perfil">
+    <img src="imagenes/img1.jpg" alt="Foto de perfil">
+    <div class="perfil-info">
+        <h2 style="border:none; padding:0; margin:0 0 8px 0; font-size:1.3rem;">Cristopher Estuardo Pivaral Sigaran</h2>
+        <p><b>Edad:</b> 23 años</p>
+        <p><b>Correo:</b> cpivarals@miumg.edu.gt</p>
+        <p><b>Dirección:</b> Barberena</p>
+    </div>
+</div>
+
+<h2>Estudios</h2>
+<ul>
+    <li>Primaria</li>
+    <li>Básicos</li>
+    <li>Diversificado</li>
+    <li>Universidad (cursando actualmente)</li>
+</ul>
+
+<h2>Habilidades</h2>
+<div>
+    <span class="skill-tag">HTML</span>
+    <span class="skill-tag">CSS</span>
+    <span class="skill-tag">JavaScript</span>
+    <span class="skill-tag">Base de Datos</span>
+</div>
+
+</body>
+</html>

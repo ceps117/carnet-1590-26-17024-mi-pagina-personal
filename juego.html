@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Quake — Juego</title>
+    <link rel="stylesheet" href="estilo.css">
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            background: #050508;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+
+        #header {
+            width: 100%;
+            background: rgba(4,4,8,0.95);
+            border-bottom: 1px solid #1a0808;
+            padding: 8px 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        #titulo {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            font-weight: bold;
+            letter-spacing: 4px;
+            color: #cc4400;
+            text-shadow: 0 0 16px #882200;
+        }
+
+        #controles-txt {
+            font-family: 'Courier New', monospace;
+            font-size: 0.6rem;
+            color: #443322;
+            letter-spacing: 1px;
+        }
+
+        #marco {
+            width: 100%;
+            height: calc(100vh - 45px);
+            border: none;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div id="header">
+    <div id="titulo">☢ QUAKE</div>
+    <div id="controles-txt">
+        WASD = MOVER &nbsp;|&nbsp; MOUSE = APUNTAR &nbsp;|&nbsp; CLICK = DISPARAR &nbsp;|&nbsp; ESC = SOLTAR MOUSE
+    </div>
+</div>
+
+<iframe
+    id="marco"
+    src="quake/index.htm"
+    allowfullscreen
+    allow="pointer-lock *; fullscreen">
+</iframe>
+
+</body>
+</html>
