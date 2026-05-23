@@ -1,28 +1,141 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Galería</title>
+    <title>Galeria</title>
     <link rel="stylesheet" href="estilo.css">
     <style>
         body { padding: 30px; }
+
+        .galeria img {
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .galeria img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 14px #7b2fff;
+        }
+
+        #lightbox {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        #lightbox.activo {
+            display: flex;
+        }
+
+        #lightbox img {
+            max-width: 88vw;
+            max-height: 80vh;
+            border-radius: 8px;
+            border: 2px solid #7b2fff;
+            box-shadow: 0 0 40px #4a1a9955;
+        }
+
+        #lightbox-cerrar {
+            position: absolute;
+            top: 16px;
+            right: 24px;
+            font-size: 2.2rem;
+            color: #a855f7;
+            cursor: pointer;
+            background: #16213e;
+            border: 1px solid #4a1a99;
+            border-radius: 50%;
+            width: 44px;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
+            transition: background 0.2s;
+        }
+
+        #lightbox-cerrar:hover {
+            background: #4a1a99;
+            color: #ffffff;
+        }
+
+        #lightbox-minimizar {
+            margin-top: 14px;
+            background: #16213e;
+            border: 1px solid #7b2fff;
+            color: #a855f7;
+            font-size: 0.85rem;
+            padding: 7px 22px;
+            border-radius: 5px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: background 0.2s;
+        }
+
+        #lightbox-minimizar:hover {
+            background: #4a1a99;
+            color: #ffffff;
+        }
+
+        #lightbox-hint {
+            position: absolute;
+            bottom: 18px;
+            color: #443366;
+            font-size: 0.72rem;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
 
-<h1>🖼 Galería de Imágenes</h1>
+<h1>Galeria de Imagenes</h1>
 
 <div class="galeria">
-    <img src="imagenes/img1.jpg" alt="Imagen 1">
-    <img src="imagenes/img2.jpg" alt="Imagen 2">
-    <img src="imagenes/img3.jpg" alt="Imagen 3">
-    <img src="imagenes/img4.jpg" alt="Imagen 4">
-    <img src="imagenes/img5.jpg" alt="Imagen 5">
-    <img src="imagenes/img6.jpg" alt="Imagen 6">
-    <img src="imagenes/img7.jpg" alt="Imagen 7">
-    <img src="imagenes/img8.jpg" alt="Imagen 8">
-    <img src="imagenes/img9.jpg" alt="Imagen 9">
-    <img src="imagenes/img10.jpg" alt="Imagen 10">
+    <img src="imagenes/img1.jpg" alt="Imagen 1" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img2.jpg" alt="Imagen 2" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img3.jpg" alt="Imagen 3" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img4.jpg" alt="Imagen 4" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img5.jpg" alt="Imagen 5" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img6.jpg" alt="Imagen 6" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img7.jpg" alt="Imagen 7" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img8.jpg" alt="Imagen 8" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img9.jpg" alt="Imagen 9" onclick="abrirLightbox(this.src)">
+    <img src="imagenes/img10.jpg" alt="Imagen 10" onclick="abrirLightbox(this.src)">
 </div>
+
+<div id="lightbox">
+    <button id="lightbox-cerrar" onclick="cerrarLightbox()">&times;</button>
+    <img id="lightbox-img" src="" alt="Imagen ampliada">
+    <button id="lightbox-minimizar" onclick="cerrarLightbox()">Minimizar imagen</button>
+    <span id="lightbox-hint">Clic fuera de la imagen o ESC para cerrar</span>
+</div>
+
+<script>
+    var lightbox = document.getElementById('lightbox');
+    var imgGrande = document.getElementById('lightbox-img');
+
+    function abrirLightbox(src) {
+        imgGrande.src = src;
+        lightbox.classList.add('activo');
+    }
+
+    function cerrarLightbox() {
+        lightbox.classList.remove('activo');
+        imgGrande.src = '';
+    }
+
+    lightbox.addEventListener('click', function(e) {
+        if (e.target === lightbox) cerrarLightbox();
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') cerrarLightbox();
+    });
+</script>
 
 </body>
 </html>
