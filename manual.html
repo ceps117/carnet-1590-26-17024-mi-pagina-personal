@@ -3,109 +3,236 @@
 <head>
     <title>Manual Tecnico</title>
     <link rel="stylesheet" href="estilo.css">
+    <style>
+        body { padding: 30px; }
+        p { color: #aaaacc; font-size: 0.95rem; line-height: 1.7; margin-bottom: 10px; }
+        ol li { color: #aaaacc; font-size: 0.9rem; margin-bottom: 4px; }
+        .seccion { margin-bottom: 32px; }
+        .links-titulo {
+            font-size: 0.8rem;
+            color: #7b2fff;
+            margin-top: 12px;
+            margin-bottom: 6px;
+            display: block;
+        }
+        .link-grupo { display: flex; flex-direction: column; gap: 4px; }
+        .link-ref {
+            display: inline-block;
+            color: #a855f7;
+            font-size: 0.8rem;
+            text-decoration: none;
+            background: none;
+            border: none;
+            padding: 3px 0;
+            border-left: none;
+        }
+        .link-ref:hover {
+            color: #ffffff;
+            background: none;
+            text-decoration: underline;
+        }
+        .tipo-yt { color: #cc2222; }
+        .tipo-web { color: #2266cc; }
+        .tipo-doc { color: #22aa66; }
+    </style>
 </head>
 <body>
 
 <h1>Manual Tecnico</h1>
 
+<div class="seccion">
 <h2>1. Estructura del Proyecto</h2>
-<p>El proyecto esta organizado en una carpeta principal que contiene todos los archivos HTML, el archivo CSS y las subcarpetas necesarias para los recursos.</p>
+<p>El proyecto esta organizado en una carpeta principal con todos los archivos HTML, el CSS y subcarpetas para recursos. Esta estructura es importante para que los enlaces entre archivos funcionen correctamente.</p>
 <ol>
-    <li>Carpeta raiz: contiene index.html, menu.html, estilo.css y todas las paginas.</li>
-    <li>Carpeta imagenes: contiene las 10 imagenes usadas en la galeria.</li>
-    <li>Carpeta musica: contiene los archivos mp3 que se reproducen en la pagina del juego.</li>
-    <li>Carpeta quake: contiene el motor WebQuake y los archivos del juego.</li>
-    <li>Carpeta quake/id1: contiene el archivo pak0.pak con los datos del juego Quake.</li>
+    <li>Carpeta raiz: index.html, menu.html, estilo.css y todas las paginas HTML.</li>
+    <li>Carpeta imagenes: las 10 imagenes de la galeria y la foto de perfil.</li>
+    <li>Carpeta musica: archivos mp3 del reproductor de la pagina del juego.</li>
+    <li>Carpeta quake: motor WebQuake y archivos del juego Quake.</li>
+    <li>Carpeta quake/id1: archivo pak0.pak con los datos del juego.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=ELSm-G201Ls" target="_blank"><span class="tipo-yt">YouTube</span> — Curso completo HTML y CSS desde cero (2024)</a>
+    <a class="link-ref" href="https://www.w3schools.com/html/html_intro.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Introduccion a HTML</a>
+    <a class="link-ref" href="https://developer.mozilla.org/es/docs/Learn_web_development/Getting_started/Your_first_website" target="_blank"><span class="tipo-doc">MDN</span> — Tu primera pagina web</a>
+</div>
+</div>
 
+<div class="seccion">
 <h2>2. Creacion del index.html con Frames</h2>
-<p>El archivo index.html utiliza la etiqueta frameset para dividir la pantalla en dos secciones. La columna izquierda tiene un ancho fijo de 220 pixeles y muestra el menu de navegacion. La columna derecha ocupa el resto del espacio y carga las paginas cuando el usuario hace clic en un enlace.</p>
+<p>El archivo index.html usa frameset para dividir la pantalla en dos columnas. La izquierda tiene 220px fijos y muestra el menu. La derecha ocupa el resto y carga las paginas al hacer clic en los enlaces del menu.</p>
 <ol>
-    <li>Se uso la etiqueta frameset con el atributo cols="220px,*" para definir las columnas.</li>
-    <li>El primer frame carga menu.html y tiene el nombre "menu".</li>
-    <li>El segundo frame carga bienvenida.html al inicio y tiene el nombre "contenido".</li>
-    <li>Los enlaces del menu usan target="contenido" para abrir las paginas en el frame derecho.</li>
-    <li>El enlace del juego usa target="_top" para abrir fuera del frameset.</li>
+    <li>Se uso frameset con cols="220px,*" para las dos columnas.</li>
+    <li>El primer frame carga menu.html con el nombre "menu".</li>
+    <li>El segundo frame carga bienvenida.html con el nombre "contenido".</li>
+    <li>Los enlaces del menu usan target="contenido" para abrir en el frame derecho.</li>
+    <li>El enlace del juego usa target="_top" para salir del frameset completamente.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=84o47055oEM" target="_blank"><span class="tipo-yt">YouTube</span> — Crear menu de navegacion con HTML y CSS</a>
+    <a class="link-ref" href="https://www.w3schools.com/html/html_links.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Como funcionan los enlaces HTML</a>
+    <a class="link-ref" href="https://developer.mozilla.org/es/docs/Web/HTML/Element/frameset" target="_blank"><span class="tipo-doc">MDN</span> — Referencia de frameset</a>
+</div>
+</div>
 
+<div class="seccion">
 <h2>3. Diseno con CSS</h2>
-<p>El archivo estilo.css aplica el diseno visual a todas las paginas del sitio. Se utilizo un esquema de colores oscuro con tonos azul y morado. Las propiedades principales utilizadas fueron las siguientes.</p>
+<p>El archivo estilo.css aplica el diseno visual a todas las paginas. Se uso un esquema oscuro con azul y morado. No se usaron frameworks externos, todo es CSS puro con propiedades basicas accesibles para cualquier nivel.</p>
 <ol>
-    <li>background-color: define el color de fondo de cada elemento.</li>
-    <li>font-family: se uso Arial como fuente principal por ser compatible con todos los navegadores.</li>
-    <li>border-radius: redondea las esquinas de los botones y las imagenes.</li>
-    <li>border-left: agrega una linea de color morado al lado izquierdo de cada enlace del menu.</li>
-    <li>display flex con flex-wrap wrap: permite que las imagenes de la galeria se acomoden automaticamente en filas.</li>
-    <li>border-collapse collapse: elimina el espacio doble entre celdas de la tabla.</li>
-    <li>object-fit cover: hace que las imagenes llenen su espacio sin deformarse.</li>
+    <li>background-color define el color de fondo de cada elemento.</li>
+    <li>font-family Arial se uso por compatibilidad con todos los navegadores.</li>
+    <li>border-radius redondea las esquinas de botones e imagenes.</li>
+    <li>border-left agrega una linea morada al lado izquierdo de cada enlace.</li>
+    <li>display flex con flex-wrap wrap acomoda las imagenes en filas automaticamente.</li>
+    <li>border-collapse collapse elimina el espacio doble entre celdas de la tabla.</li>
+    <li>object-fit cover hace que las imagenes llenen su espacio sin deformarse.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=aFpns1de-Hk" target="_blank"><span class="tipo-yt">YouTube</span> — Curso HTML y CSS desde cero completo (AlexCG Design)</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=XqFR2lqBYPs" target="_blank"><span class="tipo-yt">YouTube</span> — Aprende HTML y CSS desde cero (freeCodeCamp)</a>
+    <a class="link-ref" href="https://www.youtube.com/playlist?list=PLPl81lqbj-4KaMYQ9nrh-NjTIcgmbL1V2" target="_blank"><span class="tipo-yt">YouTube</span> — Curso completo HTML5 y CSS3 con proyecto real</a>
+    <a class="link-ref" href="https://www.w3schools.com/css/default.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Tutorial CSS completo</a>
+    <a class="link-ref" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank"><span class="tipo-web">CSS Tricks</span> — Guia completa de Flexbox</a>
+    <a class="link-ref" href="https://developer.mozilla.org/es/docs/Web/CSS" target="_blank"><span class="tipo-doc">MDN</span> — Documentacion oficial de CSS</a>
+    <a class="link-ref" href="https://freecodecamp.org/espanol/news/aprende-html-y-css-curso-desde-cero/" target="_blank"><span class="tipo-web">freeCodeCamp</span> — Aprende HTML y CSS desde cero en espanol</a>
+</div>
+</div>
 
+<div class="seccion">
 <h2>4. Menu de Navegacion</h2>
-<p>El menu se creo en un archivo separado llamado menu.html. Contiene una lista desordenada con enlaces a cada seccion del sitio. Cada enlace tiene el atributo target que indica en que frame o ventana se abre la pagina.</p>
+<p>El menu esta en menu.html usando una lista desordenada ul con enlaces a cada seccion. Cada enlace tiene el atributo target para indicar donde se abre la pagina. Se agrego un boton de inicio para volver a bienvenida.html.</p>
 <ol>
-    <li>Se uso la etiqueta ul para crear la lista de enlaces.</li>
-    <li>Cada enlace tiene href con la ruta del archivo y target con el nombre del frame destino.</li>
+    <li>Se uso ul y li para crear la lista de enlaces.</li>
+    <li>Cada a tiene href con la ruta del archivo y target con el destino.</li>
     <li>El CSS elimina los puntos de la lista con list-style-type none.</li>
-    <li>Se agrego un borde izquierdo de color morado a cada enlace con border-left.</li>
+    <li>El boton de inicio usa target="contenido" para cargar bienvenida.html en el frame derecho.</li>
+    <li>Se uso border-left para dar el efecto visual de barra lateral en cada enlace.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=sRaVhp96jxM" target="_blank"><span class="tipo-yt">YouTube</span> — Crear menu de navegacion lateral con CSS</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=5HkOLcRCHLA" target="_blank"><span class="tipo-yt">YouTube</span> — Menu responsive con HTML y CSS (2022)</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=2n5_9boyGWw" target="_blank"><span class="tipo-yt">YouTube</span> — Como hacer un menu lateral con HTML y CSS</a>
+    <a class="link-ref" href="https://www.w3schools.com/html/html_links.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Como usar enlaces en HTML</a>
+</div>
+</div>
 
-<h2>5. Galeria de Imagenes</h2>
-<p>La galeria muestra 10 imagenes usando un contenedor div con la clase galeria. El CSS aplica flexbox para acomodar las imagenes en filas automaticamente segun el ancho disponible.</p>
+<div class="seccion">
+<h2>5. Galeria de Imagenes con Lightbox</h2>
+<p>La galeria muestra 10 imagenes con flexbox. Al hacer clic en una se abre en grande con un efecto lightbox hecho en JavaScript puro sin librerias externas. Se cierra con el boton X, haciendo clic fuera de la imagen, o presionando ESC.</p>
 <ol>
-    <li>Se creo una carpeta llamada imagenes dentro del proyecto.</li>
-    <li>Las imagenes se nombraron img1.jpg hasta img10.jpg.</li>
-    <li>Se uso display flex y flex-wrap wrap para el contenedor.</li>
-    <li>Cada imagen tiene width 200px, height 140px y object-fit cover.</li>
-    <li>Se agrego border-radius para redondear las esquinas.</li>
+    <li>Se creo la carpeta imagenes con los archivos img1.jpg hasta img10.jpg.</li>
+    <li>Se uso display flex y flex-wrap wrap en el contenedor de la galeria.</li>
+    <li>El lightbox es un div con position fixed que cubre toda la pantalla con fondo oscuro.</li>
+    <li>Al hacer clic en una imagen, JavaScript copia su src al img del lightbox y lo muestra.</li>
+    <li>Un listener de teclado permite cerrar el lightbox con la tecla ESC.</li>
+    <li>El boton X en la esquina superior derecha tambien cierra el lightbox.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=jVM-YU8s6SQ" target="_blank"><span class="tipo-yt">YouTube</span> — Crea tu propio Lightbox en JavaScript (2023)</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=4gLZYgmRN6E" target="_blank"><span class="tipo-yt">YouTube</span> — Galeria de imagenes con efecto lightbox HTML y CSS</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=VQPz8DaZN0Y" target="_blank"><span class="tipo-yt">YouTube</span> — Galeria lightbox con HTML CSS y JavaScript sin plugins</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=wpUeLfkC2iE" target="_blank"><span class="tipo-yt">YouTube</span> — Como hacer una galeria de imagenes con Lightbox JS</a>
+    <a class="link-ref" href="https://www.w3schools.com/howto/howto_js_lightbox.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Como hacer un Lightbox paso a paso</a>
+    <a class="link-ref" href="https://www.ezavalar.com/2024/05/creacion-de-una-galeria-de-imagenes-con.html" target="_blank"><span class="tipo-web">Blog</span> — Galeria con lightbox usando solo HTML y CSS</a>
+</div>
+</div>
 
+<div class="seccion">
 <h2>6. Video de YouTube</h2>
-<p>El video se inserto usando la etiqueta iframe apuntando a la URL de embed de YouTube. Esta URL tiene el formato youtube.com/embed/ seguido del ID del video.</p>
+<p>El video se inserto con la etiqueta iframe apuntando a la URL de embed de YouTube. El formato es youtube.com/embed/ seguido del ID del video. Solo funciona en un dominio real como GitHub Pages, no al abrir el archivo local.</p>
 <ol>
     <li>Se copio el ID del video desde la URL de YouTube.</li>
     <li>Se construyo la URL de embed con el formato correcto.</li>
-    <li>Se agrego el atributo allowfullscreen para permitir pantalla completa.</li>
-    <li>El video solo funciona cuando la pagina esta publicada en un dominio real como GitHub Pages.</li>
+    <li>Se agrego allowfullscreen para permitir pantalla completa.</li>
+    <li>Para playlists se usa el formato youtube.com/embed/videoseries?list=ID.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=im8u6nluSHk" target="_blank"><span class="tipo-yt">YouTube</span> — Como insertar video de YouTube en HTML</a>
+    <a class="link-ref" href="https://www.w3schools.com/html/html_youtube.asp" target="_blank"><span class="tipo-web">W3Schools</span> — YouTube en HTML tutorial</a>
+    <a class="link-ref" href="https://support.google.com/youtube/answer/171780" target="_blank"><span class="tipo-doc">Google</span> — Como insertar videos de YouTube oficialmente</a>
+</div>
+</div>
 
+<div class="seccion">
 <h2>7. Tabla de Notas</h2>
-<p>La tabla de notas se creo con las etiquetas table, tr, th y td. Se agrego una columna extra para mostrar el promedio de cada curso calculado manualmente.</p>
+<p>La tabla se creo con las etiquetas table, tr, th y td. Se agrego una columna extra de promedio calculada manualmente. El CSS aplica fondo oscuro con encabezados morados y separa las filas con border-bottom.</p>
 <ol>
     <li>Se uso th para los encabezados con fondo morado definido en el CSS.</li>
-    <li>Se uso td para cada celda de datos con padding de 10px.</li>
-    <li>border-collapse collapse elimina el espacio entre celdas.</li>
-    <li>Se agrego border-bottom a cada fila para separar visualmente los datos.</li>
+    <li>Se uso td para cada celda con padding de 10px.</li>
+    <li>border-collapse collapse elimina el espacio doble entre celdas.</li>
+    <li>border-bottom en cada td separa visualmente las filas.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=GVjgi3Fg4Xg" target="_blank"><span class="tipo-yt">YouTube</span> — Tablas en HTML y CSS paso a paso</a>
+    <a class="link-ref" href="https://www.w3schools.com/html/html_tables.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Tutorial de tablas HTML completo</a>
+    <a class="link-ref" href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content/HTML_table_basics" target="_blank"><span class="tipo-doc">MDN</span> — Tablas HTML basicas</a>
+</div>
+</div>
 
-<h2>8. Juego Quake</h2>
-<p>Se integro el juego Quake 1 usando WebQuake, un port del motor original a JavaScript. Los archivos del juego se alojan dentro del propio repositorio para que funcionen sin depender de servidores externos.</p>
+<div class="seccion">
+<h2>8. Reproductor de Musica</h2>
+<p>La pagina del juego tiene un reproductor usando la etiqueta audio de HTML5 y JavaScript. Las canciones estan en la carpeta musica y se reproducen en orden volviendo al inicio al terminar la ultima.</p>
 <ol>
-    <li>Se descargo WebQuake desde GitHub y se copio la carpeta Client/WebQuake al proyecto.</li>
-    <li>Se descargo el archivo pak0.pak del shareware de Quake 1 y se coloco en quake/id1/.</li>
-    <li>Se creo un archivo autoexec.cfg en quake/id1/ para configurar los controles WASD y el mouse.</li>
-    <li>Se modifico el archivo IN.js para que el mouse quede capturado con un solo clic.</li>
-    <li>El enlace del menu usa target="_top" para abrir la pagina fuera del frameset.</li>
-    <li>El boton de jugar usa target="_blank" para abrir el juego en una pestaña nueva.</li>
-    <li>Los archivos en quake/id1/ se nombraron en minusculas para compatibilidad con GitHub Pages.</li>
+    <li>Se creo la carpeta musica con cancion1.mp3 hasta cancion5.mp3.</li>
+    <li>Se uso la etiqueta audio con autoplay para iniciar al cargar la pagina.</li>
+    <li>JavaScript maneja un arreglo de canciones y un indice para saber cual esta activa.</li>
+    <li>El evento ended llama automaticamente a siguiente() al terminar cada cancion.</li>
+    <li>El reproductor visual es un div con position fixed en la esquina inferior derecha.</li>
+    <li>Los botones de anterior, pausa y siguiente cambian el src del audio y llaman a play().</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=UdOBCdC2kRM" target="_blank"><span class="tipo-yt">YouTube</span> — Crear reproductor de musica con HTML CSS y JS (2024)</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=Ekq5Xn3GA_s" target="_blank"><span class="tipo-yt">YouTube</span> — Reproductor de musica con playlist en JavaScript (2025)</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=dZKF5Sqg4lI" target="_blank"><span class="tipo-yt">YouTube</span> — Reproductor de musica HTML CSS JavaScript completo</a>
+    <a class="link-ref" href="https://www.youtube.com/watch?v=_ObsZ5Bpz4Q" target="_blank"><span class="tipo-yt">YouTube</span> — Dale musica a tu sitio web con HTML y JS</a>
+    <a class="link-ref" href="https://developer.mozilla.org/es/docs/Learn_web_development/Core/Structuring_content/HTML_video_and_audio" target="_blank"><span class="tipo-doc">MDN</span> — Audio y video en HTML5</a>
+    <a class="link-ref" href="https://www.w3schools.com/html/html5_audio.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Etiqueta audio en HTML5</a>
+</div>
+</div>
 
-<h2>9. Musica de Fondo</h2>
-<p>La pagina del juego incluye un reproductor de musica usando la etiqueta audio de HTML5. Las canciones se almacenan en una carpeta llamada musica dentro del proyecto.</p>
+<div class="seccion">
+<h2>9. Juego Quake</h2>
+<p>Se integro Quake 1 usando WebQuake, un port del motor original a JavaScript. Los archivos se alojan en el repositorio para no depender de servidores externos. Se modifico IN.js para mejorar el control del mouse y se creo autoexec.cfg para configurar los controles al inicio.</p>
 <ol>
-    <li>Se creo una carpeta musica y se colocaron los archivos mp3 dentro.</li>
-    <li>Se uso la etiqueta audio con JavaScript para crear una lista de reproduccion.</li>
-    <li>Las canciones se reproducen en orden y vuelven al inicio al terminar la ultima.</li>
-    <li>Se agrego un control visual fijo en la esquina inferior derecha de la pagina.</li>
+    <li>Se descargo WebQuake desde GitHub y se copio Client/WebQuake al proyecto.</li>
+    <li>Se descargo el shareware pak0.pak y se coloco en quake/id1/ en minusculas.</li>
+    <li>Se creo autoexec.cfg en quake/id1/ para configurar WASD, mouse y freelook.</li>
+    <li>Se modifico IN.js para capturar el mouse con un solo clic y activar freelook completo.</li>
+    <li>El enlace del menu usa target="_top" para salir del frameset.</li>
+    <li>El boton jugar usa target="_blank" para abrir en pestana nueva donde los controles funcionan.</li>
+    <li>Los archivos en quake/id1/ se nombraron en minusculas para compatibilidad con Linux y GitHub Pages.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://github.com/SiPlus/WebQuake" target="_blank"><span class="tipo-doc">GitHub</span> — Repositorio oficial de WebQuake</a>
+    <a class="link-ref" href="https://developer.mozilla.org/en-US/docs/Web/API/Pointer_Lock_API" target="_blank"><span class="tipo-doc">MDN</span> — Pointer Lock API para control del mouse</a>
+</div>
+</div>
 
+<div class="seccion">
 <h2>10. Publicacion en GitHub Pages</h2>
+<p>El sitio se publico en GitHub Pages de forma gratuita. Esto genera una URL publica donde todo funciona correctamente incluyendo el video de YouTube y el juego Quake con sus archivos locales.</p>
 <ol>
     <li>Se creo un repositorio en github.com.</li>
-    <li>Se subieron todos los archivos del proyecto al repositorio.</li>
+    <li>Se subieron todos los archivos del proyecto incluyendo la carpeta quake completa.</li>
     <li>En Settings, seccion Pages, se selecciono la rama main como fuente.</li>
-    <li>GitHub genera automaticamente una URL publica para acceder al sitio.</li>
+    <li>GitHub genera automaticamente la URL usuario.github.io/nombre-repositorio.</li>
     <li>Se verifico que todos los enlaces, el video y el juego funcionaran correctamente.</li>
 </ol>
+<span class="links-titulo">tutoriales de como hacerlo:</span>
+<div class="link-grupo">
+    <a class="link-ref" href="https://www.youtube.com/watch?v=TC8bT7zTdoE" target="_blank"><span class="tipo-yt">YouTube</span> — Crea y sube una pagina web a GitHub Pages gratis</a>
+    <a class="link-ref" href="https://docs.github.com/es/pages/getting-started-with-github-pages/about-github-pages" target="_blank"><span class="tipo-doc">GitHub Docs</span> — Que es GitHub Pages y como funciona</a>
+    <a class="link-ref" href="https://www.w3schools.com/git/git_intro.asp" target="_blank"><span class="tipo-web">W3Schools</span> — Introduccion a Git y GitHub</a>
+</div>
+</div>
 
 </body>
 </html>
